@@ -69,10 +69,10 @@ function draw() {
     clear();
     game.play();
   }
-  //if (finishedPlayers === 2) {
-    //console.log("End");
-    //game.update(2);
-  //}
+  if (gameState === 2) {
+    console.log("End");
+    game.end();
+  }
   //if(gameState === 2 && finishedPlayers === 2){
     //game.displayRanks();
   //}
