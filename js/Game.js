@@ -135,11 +135,37 @@ class Game{
                 fruitGroup.add(fruits);
             }
 
+            textSize(25);
+            fill("white");
+            text("Player 1 : " + allPlayers.player1.score, 50, 50);
+            text("Player 2 : " + allPlayers.player2.score, 50, 100);
+
+            if(player.index !== null){
+                for(var i = 0; i < fruitGroup.length; i++){
+                    if(fruitGroup.get(i).isTouching(players)){
+                        fruitGroup.get(i).destroy();
+                        player.score += 1;
+                        player.update();
+                    }
+                }
+            }
+
+            if(player.score >= 10){
+                game.update(2);
+                game.getState();
+            }
+
             drawSprites();
         }
     }
 
     end(){
+        game.update(2);
+        clear();
+        fill("blue");
+        textSize(40);
+        text("Game Over", 350, 300);
+        text(player.name + " Won!", 350, 400);
        console.log("Game Ended");
     }
 }
